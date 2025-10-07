@@ -1,9 +1,14 @@
 package com.firefly.domain.distributor.branding.core.distributor.services.impl;
 
+import com.firefly.common.domain.cqrs.command.CommandBus;
 import com.firefly.common.domain.cqrs.query.QueryBus;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterDistributorCommand;
+import com.firefly.domain.distributor.branding.core.distributor.commands.*;
+import com.firefly.domain.distributor.branding.core.distributor.queries.ReviewBrandingAuditLogsQuery;
 import com.firefly.domain.distributor.branding.core.distributor.services.DistributorService;
 import com.firefly.domain.distributor.branding.core.distributor.workflows.RegisterDistributorSaga;
+import com.firefly.domain.distributor.branding.core.distributor.workflows.SetDefaultBrandingSaga;
+import com.firefly.domain.distributor.branding.core.distributor.workflows.UpdateBrandingSaga;
+import com.firefly.domain.distributor.branding.core.distributor.workflows.UpdateTermsAndConditionsSaga;
 import com.firefly.transactional.core.SagaResult;
 import com.firefly.transactional.engine.SagaEngine;
 import com.firefly.transactional.engine.StepInputs;
@@ -11,16 +16,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 public class DistributorServiceImpl implements DistributorService {
 
     private final SagaEngine engine;
-    private final QueryBus queryBus;
 
     @Autowired
-    public DistributorServiceImpl(SagaEngine engine, QueryBus queryBus){
+    public DistributorServiceImpl(SagaEngine engine){
         this.engine=engine;
-        this.queryBus = queryBus;
     }
 
     @Override
@@ -35,6 +41,29 @@ public class DistributorServiceImpl implements DistributorService {
                 .build();
 
         return engine.execute(RegisterDistributorSaga.class, inputs);
+    }
+
+    @Override
+    public Mono<SagaResult> reviseBranding(ReviseBrandingCommand command) {
+        StepInputs inputs = StepInputs.builder()
+                .forStep(UpdateBrandingSaga::reviseBranding, command).build();
+
+        return engine.execute(UpdateBrandingSaga.class, inputs);
+    }
+
+    @Override
+    public Mono<SagaResult> setDefaultBranding(SetDefaultBrandingCommand command) {
+        StepInputs inputs = StepInputs.builder()
+                .forStep(SetDefaultBrandingSaga::setDefaultBranding, command).build();
+        return engine.execute(SetDefaultBrandingSaga.class, inputs);
+    }
+
+    @Override
+    public Mono<SagaResult> reviseTermsAndConditions(ReviseTermsAndConditionsCommand command) {
+        StepInputs inputs = StepInputs.builder()
+                .forStep(UpdateTermsAndConditionsSaga::reviseTermsAndConditions, command).build();
+
+        return engine.execute(UpdateTermsAndConditionsSaga.class, inputs);
     }
 
 }

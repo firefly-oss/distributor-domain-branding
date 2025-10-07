@@ -4,6 +4,9 @@ public class DistributorConstants {
 
     // ============================== SAGA CONFIGURATION ==============================
     public static final String SAGA_REGISTER_DISTRIBUTOR = "RegisterDistributorSaga";
+    public static final String SAGA_UPDATE_BRANDING = "UpdateBrandingSaga";
+    public static final String SAGA_SET_DEFAULT_BRANDING = "SetDefaultBrandingSaga";
+    public static final String SAGA_UPDATE_TERMS_AND_CONDITIONS = "UpdateTermsAndConditionsSaga";
 
 
     // ============================== STEP IDENTIFIERS ==============================
@@ -12,6 +15,9 @@ public class DistributorConstants {
     public static final String STEP_REGISTER_TERMS_AND_CONDITIONS = "registerTermsAndConditions";
     public static final String STEP_REGISTER_AUDIT_LOG = "registerAuditLog";
     public static final String STEP_REGISTER_BRANDING = "registerBranding";
+    public static final String STEP_UPDATE_BRANDING = "updateBranding";
+    public static final String STEP_SET_DEFAULT_BRANDING = "setDefaultBranding";
+    public static final String STEP_UPDATE_TERMS_AND_CONDITIONS = "updateTermsAndConditions";
 
 
     // ============================== COMPENSATE METHODS ==============================
@@ -27,6 +33,8 @@ public class DistributorConstants {
     public static final String EVENT_TERMS_AND_CONDITIONS_REGISTERED = "termsAndConditions.registered";
     public static final String EVENT_AUDIT_LOG_REGISTERED = "auditLog.registered";
     public static final String EVENT_BRANDING_REGISTERED = "branding.registered";
+    public static final String EVENT_BRANDING_UPDATED = "branding.updated";
+    public static final String EVENT_TERMS_AND_CONDITIONS_UPDATED = "termsAndConditions.updated";
 
 
 }
