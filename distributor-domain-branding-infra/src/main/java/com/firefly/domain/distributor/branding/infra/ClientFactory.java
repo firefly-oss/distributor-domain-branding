@@ -27,5 +27,25 @@ public class ClientFactory {
         return new DistributorApi(apiClient);
     }
 
+    @Bean
+    public TermsAndConditionsTemplatesApi termsAndConditionsTemplatesApi() {
+        return new TermsAndConditionsTemplatesApi(apiClient);
+    }
+
+    @Bean
+    public DistributorTermsAndConditionsApi distributorTermsAndConditionsApi() {
+        return new DistributorTermsAndConditionsApi(apiClient);
+    }
+
+    @Bean
+    public DistributorAuditLogApi distributorAuditLogApi() {
+        return new DistributorAuditLogApi(apiClient);
+    }
+
+    @Bean
+    public DistributorBrandingApi distributorBrandingApi() {
+        return new DistributorBrandingApi(apiClient);
+    }
+
 
 }

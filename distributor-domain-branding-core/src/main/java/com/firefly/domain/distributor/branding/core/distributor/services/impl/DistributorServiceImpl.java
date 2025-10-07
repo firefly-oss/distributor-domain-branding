@@ -27,6 +27,10 @@ public class DistributorServiceImpl implements DistributorService {
     public Mono<SagaResult> onboardDistributor(RegisterDistributorCommand command) {
         StepInputs inputs = StepInputs.builder()
                 .forStep(RegisterDistributorSaga::registerDistributor, command.getDistributorInfo())
+                .forStep(RegisterDistributorSaga::registerTAndCTemplate, command.getTermsAndConditionsTemplate())
+                .forStep(RegisterDistributorSaga::registerTermsAndConditions, command.getTermsAndConditions())
+                .forStep(RegisterDistributorSaga::registerAuditLog, command.getAuditLog())
+                .forStep(RegisterDistributorSaga::registerBranding, command.getBranding())
 
                 .build();
 

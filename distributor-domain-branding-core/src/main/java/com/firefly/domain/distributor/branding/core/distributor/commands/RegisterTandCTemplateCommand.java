@@ -17,15 +17,14 @@
 package com.firefly.domain.distributor.branding.core.distributor.commands;
 
 import com.firefly.common.domain.cqrs.command.Command;
+import com.firefly.core.distributor.sdk.model.DistributorDTO;
+import com.firefly.core.distributor.sdk.model.TermsAndConditionsTemplateDTO;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class RegisterDistributorCommand implements Command<UUID> {
-    private RegisterDistributorInfoCommand distributorInfo;
-    private RegisterTandCTemplateCommand termsAndConditionsTemplate;
-    private RegisterTermsAndConditionsCommand termsAndConditions;
-    private RegisterDistributorAuditLogCommand auditLog;
-    private RegisterDistributorBrandingCommand branding;
+public class RegisterTandCTemplateCommand extends TermsAndConditionsTemplateDTO implements Command<UUID> {
 }
