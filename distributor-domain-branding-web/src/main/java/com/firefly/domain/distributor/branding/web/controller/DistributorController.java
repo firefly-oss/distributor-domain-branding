@@ -1,6 +1,9 @@
 package com.firefly.domain.distributor.branding.web.controller;
 
-import com.firefly.domain.distributor.branding.core.distributor.commands.*;
+import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterDistributorCommand;
+import com.firefly.domain.distributor.branding.core.distributor.commands.ReviseBrandingCommand;
+import com.firefly.domain.distributor.branding.core.distributor.commands.ReviseTermsAndConditionsCommand;
+import com.firefly.domain.distributor.branding.core.distributor.commands.SetDefaultBrandingCommand;
 import com.firefly.domain.distributor.branding.core.distributor.services.DistributorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

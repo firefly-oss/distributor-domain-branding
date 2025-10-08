@@ -6,8 +6,6 @@ import com.firefly.core.distributor.sdk.api.DistributorTermsAndConditionsApi;
 import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveTermsAndConditionsCommand;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
 @CommandHandlerComponent
 public class RemoveTermsAndConditionsHandler extends CommandHandler<RemoveTermsAndConditionsCommand, Void> {
 

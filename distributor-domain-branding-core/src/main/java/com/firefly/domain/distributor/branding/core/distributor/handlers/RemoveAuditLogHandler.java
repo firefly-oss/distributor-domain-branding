@@ -6,8 +6,6 @@ import com.firefly.core.distributor.sdk.api.DistributorAuditLogApi;
 import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveAuditLogCommand;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
 @CommandHandlerComponent
 public class RemoveAuditLogHandler extends CommandHandler<RemoveAuditLogCommand, Void> {
 

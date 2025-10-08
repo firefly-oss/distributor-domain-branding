@@ -17,7 +17,6 @@
 package com.firefly.domain.distributor.branding.core.distributor.commands;
 
 import com.firefly.common.domain.cqrs.command.Command;
-import com.firefly.core.distributor.sdk.model.DistributorDTO;
 import com.firefly.core.distributor.sdk.model.TermsAndConditionsTemplateDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

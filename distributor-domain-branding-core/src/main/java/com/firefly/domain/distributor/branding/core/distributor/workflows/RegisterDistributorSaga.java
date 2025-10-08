@@ -1,16 +1,7 @@
 package com.firefly.domain.distributor.branding.core.distributor.workflows;
 
 import com.firefly.common.domain.cqrs.command.CommandBus;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterDistributorInfoCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterTandCTemplateCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterTermsAndConditionsCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterDistributorAuditLogCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterDistributorBrandingCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveDistributorInfoCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveTAndCTemplateCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveTermsAndConditionsCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveAuditLogCommand;
-import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveBrandingCommand;
+import com.firefly.domain.distributor.branding.core.distributor.commands.*;
 import com.firefly.transactional.annotations.Saga;
 import com.firefly.transactional.annotations.SagaStep;
 import com.firefly.transactional.annotations.StepEvent;
@@ -22,11 +13,7 @@ import reactor.core.publisher.Mono;
 import java.util.UUID;
 
 import static com.firefly.domain.distributor.branding.core.utils.constants.DistributorConstants.*;
-import static com.firefly.domain.distributor.branding.core.utils.constants.GlobalConstants.CTX_DISTRIBUTOR_ID;
-import static com.firefly.domain.distributor.branding.core.utils.constants.GlobalConstants.CTX_TEMPLATE_ID;
-import static com.firefly.domain.distributor.branding.core.utils.constants.GlobalConstants.CTX_TERMS_AND_CONDITIONS_ID;
-import static com.firefly.domain.distributor.branding.core.utils.constants.GlobalConstants.CTX_AUDIT_LOG_ID;
-import static com.firefly.domain.distributor.branding.core.utils.constants.GlobalConstants.CTX_BRANDING_ID;
+import static com.firefly.domain.distributor.branding.core.utils.constants.GlobalConstants.*;
 
 
 @Saga(name = SAGA_REGISTER_DISTRIBUTOR)

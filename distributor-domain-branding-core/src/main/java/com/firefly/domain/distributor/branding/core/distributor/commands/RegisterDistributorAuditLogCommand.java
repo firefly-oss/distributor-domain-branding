@@ -20,13 +20,7 @@ import com.firefly.common.domain.cqrs.command.Command;
 import com.firefly.core.distributor.sdk.model.DistributorAuditLogDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)

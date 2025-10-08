@@ -1,0 +1,1149 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "distributor-domain-branding",
+    "description": "Distributor Domain Branding Layer Application",
+    "contact": {
+      "name": "Firefly Software Solutions Inc",
+      "email": "dev@getfirefly.io"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://core.getfirefly.io/distributor-domain-branding",
+      "description": "Development Environment"
+    },
+    {
+      "url": "/",
+      "description": "Local Development Environment"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Distributor",
+      "description": "CQ queries and registration for Distributors"
+    }
+  ],
+  "paths": {
+    "/api/v1/distributors/{distributorId}/terms-and-conditions/{tcId}": {
+      "put": {
+        "tags": [
+          "Distributor"
+        ],
+        "summary": "Revise Terms and Conditions",
+        "description": "Revise or version distributor's terms & conditions.",
+        "operationId": "reviseTermsAndConditions",
+        "parameters": [
+          {
+            "name": "distributorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "tcId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Idempotency-Key",
+            "in": "header",
+            "description": "Unique key for idempotent requests. If provided, ensures that identical requests with the same key will only be processed once.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Party-ID",
+            "in": "header",
+            "description": "Identifier of the client (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Employee-ID",
+            "in": "header",
+            "description": "Identifier of the employee (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Service-Account-ID",
+            "in": "header",
+            "description": "Identifier of the service account (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Roles",
+            "in": "header",
+            "description": "Roles of the subject (CUSTOMER, ADMIN, CUSTOMER_SUPPORT, SUPERVISOR, MANAGER, BRANCH_STAFF, SERVICE_ACCOUNT), comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Scopes",
+            "in": "header",
+            "description": "OAuth2 scopes like contracts.read, accounts.write, comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "Unique identifier for the request, used for traceability (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviseTermsAndConditionsCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/distributors/{distributorId}/branding/{brandingId}": {
+      "put": {
+        "tags": [
+          "Distributor"
+        ],
+        "summary": "Revise Branding",
+        "description": "Revise distributor's branding configuration.",
+        "operationId": "reviseBranding",
+        "parameters": [
+          {
+            "name": "distributorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "brandingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Idempotency-Key",
+            "in": "header",
+            "description": "Unique key for idempotent requests. If provided, ensures that identical requests with the same key will only be processed once.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Party-ID",
+            "in": "header",
+            "description": "Identifier of the client (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Employee-ID",
+            "in": "header",
+            "description": "Identifier of the employee (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Service-Account-ID",
+            "in": "header",
+            "description": "Identifier of the service account (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Roles",
+            "in": "header",
+            "description": "Roles of the subject (CUSTOMER, ADMIN, CUSTOMER_SUPPORT, SUPERVISOR, MANAGER, BRANCH_STAFF, SERVICE_ACCOUNT), comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Scopes",
+            "in": "header",
+            "description": "OAuth2 scopes like contracts.read, accounts.write, comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "Unique identifier for the request, used for traceability (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviseBrandingCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/distributors/{distributorId}/branding/{brandingId}/set-default": {
+      "put": {
+        "tags": [
+          "Distributor"
+        ],
+        "summary": "Set Default Branding",
+        "description": "Mark branding as default for the distributor.",
+        "operationId": "setDefaultBranding",
+        "parameters": [
+          {
+            "name": "distributorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "brandingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Idempotency-Key",
+            "in": "header",
+            "description": "Unique key for idempotent requests. If provided, ensures that identical requests with the same key will only be processed once.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Party-ID",
+            "in": "header",
+            "description": "Identifier of the client (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Employee-ID",
+            "in": "header",
+            "description": "Identifier of the employee (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Service-Account-ID",
+            "in": "header",
+            "description": "Identifier of the service account (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Roles",
+            "in": "header",
+            "description": "Roles of the subject (CUSTOMER, ADMIN, CUSTOMER_SUPPORT, SUPERVISOR, MANAGER, BRANCH_STAFF, SERVICE_ACCOUNT), comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Scopes",
+            "in": "header",
+            "description": "OAuth2 scopes like contracts.read, accounts.write, comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "Unique identifier for the request, used for traceability (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetDefaultBrandingCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/distributors": {
+      "post": {
+        "tags": [
+          "Distributor"
+        ],
+        "summary": "Onboard Distributor",
+        "description": "Onboard a new distributor with branding and terms & conditions.",
+        "operationId": "onboardDistributor",
+        "parameters": [
+          {
+            "name": "X-Idempotency-Key",
+            "in": "header",
+            "description": "Unique key for idempotent requests. If provided, ensures that identical requests with the same key will only be processed once.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Party-ID",
+            "in": "header",
+            "description": "Identifier of the client (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Employee-ID",
+            "in": "header",
+            "description": "Identifier of the employee (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Service-Account-ID",
+            "in": "header",
+            "description": "Identifier of the service account (at least one of X-Party-ID, X-Employee-ID, or X-Service-Account-ID is required)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Roles",
+            "in": "header",
+            "description": "Roles of the subject (CUSTOMER, ADMIN, CUSTOMER_SUPPORT, SUPERVISOR, MANAGER, BRANCH_STAFF, SERVICE_ACCOUNT), comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Auth-Scopes",
+            "in": "header",
+            "description": "OAuth2 scopes like contracts.read, accounts.write, comma-separated (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "Unique identifier for the request, used for traceability (optional)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDistributorCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DistributorDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "taxId": {
+            "type": "string"
+          },
+          "registrationNumber": {
+            "type": "string"
+          },
+          "websiteUrl": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "supportEmail": {
+            "type": "string"
+          },
+          "addressLine": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "countryCode": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isTestDistributor": {
+            "type": "boolean"
+          },
+          "timeZone": {
+            "type": "string"
+          },
+          "defaultLocale": {
+            "type": "string"
+          },
+          "onboardedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "terminatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ReviseTermsAndConditionsCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "templateId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "signedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "signedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributor": {
+            "$ref": "#/components/schemas/DistributorDTO"
+          },
+          "template": {
+            "$ref": "#/components/schemas/TermsAndConditionsTemplateDTO"
+          }
+        }
+      },
+      "TermsAndConditionsTemplateDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "templateContent": {
+            "type": "string"
+          },
+          "variables": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "approvalRequired": {
+            "type": "boolean"
+          },
+          "autoRenewal": {
+            "type": "boolean"
+          },
+          "renewalPeriodMonths": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ReviseBrandingCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "logoUrl": {
+            "type": "string"
+          },
+          "faviconUrl": {
+            "type": "string"
+          },
+          "primaryColor": {
+            "type": "string"
+          },
+          "secondaryColor": {
+            "type": "string"
+          },
+          "backgroundColor": {
+            "type": "string"
+          },
+          "fontFamily": {
+            "type": "string"
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "LIGHT",
+              "DARK",
+              "CUSTOM"
+            ]
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "SetDefaultBrandingCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "logoUrl": {
+            "type": "string"
+          },
+          "faviconUrl": {
+            "type": "string"
+          },
+          "primaryColor": {
+            "type": "string"
+          },
+          "secondaryColor": {
+            "type": "string"
+          },
+          "backgroundColor": {
+            "type": "string"
+          },
+          "fontFamily": {
+            "type": "string"
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "LIGHT",
+              "DARK",
+              "CUSTOM"
+            ]
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "RegisterDistributorAuditLogCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "CREATED",
+              "UPDATED",
+              "TERMINATED"
+            ]
+          },
+          "entity": {
+            "type": "string"
+          },
+          "entityId": {
+            "type": "string"
+          },
+          "auditMetadata": {
+            "type": "string"
+          },
+          "ipAddress": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "auditTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "RegisterDistributorBrandingCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "logoUrl": {
+            "type": "string"
+          },
+          "faviconUrl": {
+            "type": "string"
+          },
+          "primaryColor": {
+            "type": "string"
+          },
+          "secondaryColor": {
+            "type": "string"
+          },
+          "backgroundColor": {
+            "type": "string"
+          },
+          "fontFamily": {
+            "type": "string"
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "LIGHT",
+              "DARK",
+              "CUSTOM"
+            ]
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "RegisterDistributorCommand": {
+        "type": "object",
+        "properties": {
+          "distributorInfo": {
+            "$ref": "#/components/schemas/RegisterDistributorInfoCommand"
+          },
+          "termsAndConditionsTemplate": {
+            "$ref": "#/components/schemas/RegisterTandCTemplateCommand"
+          },
+          "termsAndConditions": {
+            "$ref": "#/components/schemas/RegisterTermsAndConditionsCommand"
+          },
+          "auditLog": {
+            "$ref": "#/components/schemas/RegisterDistributorAuditLogCommand"
+          },
+          "branding": {
+            "$ref": "#/components/schemas/RegisterDistributorBrandingCommand"
+          }
+        }
+      },
+      "RegisterDistributorInfoCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "taxId": {
+            "type": "string"
+          },
+          "registrationNumber": {
+            "type": "string"
+          },
+          "websiteUrl": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "supportEmail": {
+            "type": "string"
+          },
+          "addressLine": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "countryCode": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isTestDistributor": {
+            "type": "boolean"
+          },
+          "timeZone": {
+            "type": "string"
+          },
+          "defaultLocale": {
+            "type": "string"
+          },
+          "onboardedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "terminatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "RegisterTandCTemplateCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "templateContent": {
+            "type": "string"
+          },
+          "variables": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "approvalRequired": {
+            "type": "boolean"
+          },
+          "autoRenewal": {
+            "type": "boolean"
+          },
+          "renewalPeriodMonths": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "RegisterTermsAndConditionsCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "templateId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "signedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "signedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "distributor": {
+            "$ref": "#/components/schemas/DistributorDTO"
+          },
+          "template": {
+            "$ref": "#/components/schemas/TermsAndConditionsTemplateDTO"
+          }
+        }
+      }
+    }
+  }
+}
