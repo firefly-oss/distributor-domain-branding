@@ -16,7 +16,7 @@
 
 package com.firefly.domain.distributor.branding.core.distributor.commands;
 
-import com.firefly.common.domain.cqrs.command.Command;
+import com.firefly.common.cqrs.command.Command;
 import com.firefly.core.distributor.sdk.model.DistributorBrandingDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,3 +39,4 @@ public class ReviseBrandingCommand extends DistributorBrandingDTO implements Com
         return this;
     }
 }
+

@@ -16,7 +16,7 @@
 
 package com.firefly.domain.distributor.branding.core.distributor.queries;
 
-import com.firefly.common.domain.cqrs.query.Query;
+import com.firefly.common.cqrs.query.Query;
 import lombok.Data;
 
 import java.util.List;
@@ -35,3 +35,4 @@ public class ReviewBrandingAuditLogsQuery implements Query<List<Object>> {
         return this;
     }
 }
+

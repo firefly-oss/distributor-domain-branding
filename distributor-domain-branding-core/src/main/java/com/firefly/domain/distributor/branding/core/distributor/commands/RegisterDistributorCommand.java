@@ -16,7 +16,7 @@
 
 package com.firefly.domain.distributor.branding.core.distributor.commands;
 
-import com.firefly.common.domain.cqrs.command.Command;
+import com.firefly.common.cqrs.command.Command;
 import lombok.Data;
 
 import java.util.UUID;
@@ -29,3 +29,4 @@ public class RegisterDistributorCommand implements Command<UUID> {
     private RegisterDistributorAuditLogCommand auditLog;
     private RegisterDistributorBrandingCommand branding;
 }
+

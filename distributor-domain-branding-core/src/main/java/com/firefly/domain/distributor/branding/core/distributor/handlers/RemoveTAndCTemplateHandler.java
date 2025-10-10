@@ -1,7 +1,7 @@
 package com.firefly.domain.distributor.branding.core.distributor.handlers;
 
-import com.firefly.common.domain.cqrs.annotations.CommandHandlerComponent;
-import com.firefly.common.domain.cqrs.command.CommandHandler;
+import com.firefly.common.cqrs.annotations.CommandHandlerComponent;
+import com.firefly.common.cqrs.command.CommandHandler;
 import com.firefly.core.distributor.sdk.api.TermsAndConditionsTemplatesApi;
 import com.firefly.domain.distributor.branding.core.distributor.commands.RemoveTAndCTemplateCommand;
 import reactor.core.publisher.Mono;
@@ -20,3 +20,4 @@ public class RemoveTAndCTemplateHandler extends CommandHandler<RemoveTAndCTempla
         return termsAndConditionsTemplatesApi.deleteTemplate(cmd.templateId());
     }
 }
+

@@ -1,6 +1,6 @@
 package com.firefly.domain.distributor.branding.core.distributor.workflows;
 
-import com.firefly.common.domain.cqrs.command.CommandBus;
+import com.firefly.common.cqrs.command.CommandBus;
 import com.firefly.domain.distributor.branding.core.distributor.commands.*;
 import com.firefly.transactional.annotations.Saga;
 import com.firefly.transactional.annotations.SagaStep;
@@ -86,3 +86,5 @@ public class RegisterDistributorSaga {
 
 
 }
+
+

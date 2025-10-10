@@ -1,7 +1,7 @@
 package com.firefly.domain.distributor.branding.core.distributor.handlers;
 
-import com.firefly.common.domain.cqrs.annotations.CommandHandlerComponent;
-import com.firefly.common.domain.cqrs.command.CommandHandler;
+import com.firefly.common.cqrs.annotations.CommandHandlerComponent;
+import com.firefly.common.cqrs.command.CommandHandler;
 import com.firefly.core.distributor.sdk.api.DistributorApi;
 import com.firefly.domain.distributor.branding.core.distributor.commands.RegisterDistributorInfoCommand;
 import reactor.core.publisher.Mono;
@@ -25,3 +25,4 @@ public class RegisterDistributorInfoHandler extends CommandHandler<RegisterDistr
                         Objects.requireNonNull(Objects.requireNonNull(applicationCollateralDTO)).getId());
     }
 }
+

@@ -16,8 +16,8 @@
 
 package com.firefly.domain.distributor.branding.core.distributor.handlers;
 
-import com.firefly.common.domain.cqrs.annotations.QueryHandlerComponent;
-import com.firefly.common.domain.cqrs.query.QueryHandler;
+import com.firefly.common.cqrs.annotations.QueryHandlerComponent;
+import com.firefly.common.cqrs.query.QueryHandler;
 import com.firefly.domain.distributor.branding.core.distributor.queries.ReviewBrandingAuditLogsQuery;
 import reactor.core.publisher.Mono;
 
@@ -34,3 +34,4 @@ public class ReviewBrandingAuditLogsQueryHandler extends QueryHandler<ReviewBran
         return Mono.just(Collections.emptyList());
     }
 }
+
