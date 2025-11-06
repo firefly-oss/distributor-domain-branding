@@ -7,7 +7,7 @@ spring:
       name: Firefly Software Solutions Inc
       email: dev@getfirefly.io
   config:
-    import: "optional:configserver:https://app-firefly-config-server.dev.soon.es"
+    import: "optional:configserver:http://app-firefly-config-server.config.svc.cluster.local:8080"
   threads:
     virtual:
       enabled: true
