@@ -363,7 +363,7 @@ All properties are defined in `domain-distributor-branding-web/src/main/resource
 | `spring.application.name` | `domain-distributor-branding` | Service name used in actuator info and OpenAPI title |
 | `spring.application.version` | `1.0.0` | Service version exposed in the OpenAPI definition |
 | `spring.application.description` | `Distributor Domain Branding Layer Application` | OpenAPI description |
-| `spring.application.team.name` | `Firefly Software Solutions Inc` | Team name shown in OpenAPI contact |
+| `spring.application.team.name` | `Firefly Software Foundation` | Team name shown in OpenAPI contact |
 | `spring.application.team.email` | `dev@getfirefly.io` | Team email shown in OpenAPI contact |
 | `spring.threads.virtual.enabled` | `true` | Enables Java virtual threads |
 | `server.address` | `localhost` / `SERVER_ADDRESS` | Bind address for the HTTP server |
